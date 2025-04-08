@@ -11,7 +11,7 @@ const App = () => {
   {/* <Header/> */}
   <ProductsList/> 
   {/* <AddProducts/>  */}
-  {/* <Cart/> */}
+  <Cart/>
 
   </>
   )
