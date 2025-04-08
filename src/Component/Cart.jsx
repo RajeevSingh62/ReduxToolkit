@@ -1,23 +1,32 @@
 import React from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from '../redux/CartSlice';
 const Cart = () => {
-  const cartItems = [
-    {
-      id: 1,
-      name: "Product 1",
-      price: 10,
-      image: "https://via.placeholder.com/100",
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      price: 20,
-      image: "https://via.placeholder.com/100",
-      quantity: 1,
-    },
-  ];
-
+  // const cartItems = [
+  //   {
+  //     id: 1,
+  //     name: "Product 1",
+  //     price: 10,
+  //     image: "https://via.placeholder.com/100",
+  //     quantity: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Product 2",
+  //     price: 20,
+  //     image: "https://via.placeholder.com/100",
+  //     quantity: 1,
+  //   },
+  // ];
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch=useDispatch();
+  const totalPrice = cartItems.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
   return (
     <>
       <div style={{ alignItems: "center" }}>
@@ -36,15 +45,21 @@ const Cart = () => {
                   width: "200px",
                 }}
               >
-                <img src={item.image} alt={item.name} />
+                <img src={item.image} alt={item.name}  style={{width:"80px"}}/>
                 <h3>{item.name}</h3>
                 <p>price: {item.price}</p>
                 <p>Quantity: {item.quantity}</p>
+                <button onClick={() => dispatch(decreaseQuantity(item.id))}>-</button>
+          <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
+          <button onClick={() => useDispatch(removeFromCart(item.id))}>Remove</button>
               </div>
+              
             ))}
           </div>
         )}
       </div>
+      <h3>Total: ${totalPrice.toFixed(2)}</h3>
+
     </>
   );
 };

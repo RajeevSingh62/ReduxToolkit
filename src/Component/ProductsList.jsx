@@ -33,9 +33,11 @@ console.log("products list1",products)
             >
             
             <h3>Product ID: {product.id}</h3>
+            <p>{product.name}</p>
+            <img src={product.image} alt="product.name"  style={{width:"120px"}}/>
               <p><strong>Price:</strong> {product.price}</p>
               <p>{product.description}</p>
-              <button onClick={dispatch=>{addToCart}}>AddToCart</button>
+              <button onClick={()=>dispatch(addToCart(product))}>AddToCart</button>
             </div>
           )})
         }
