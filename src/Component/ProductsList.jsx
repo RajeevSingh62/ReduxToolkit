@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/ProductsThunk";
+import { addToCart } from "../redux/CartSlice";
 
 const ProductsList = () => {
 
@@ -34,6 +35,7 @@ console.log("products list1",products)
             <h3>Product ID: {product.id}</h3>
               <p><strong>Price:</strong> {product.price}</p>
               <p>{product.description}</p>
+              <button onClick={dispatch=>{addToCart}}>AddToCart</button>
             </div>
           )})
         }
