@@ -6,22 +6,7 @@ import {
   decreaseQuantity,
 } from '../redux/CartSlice';
 const Cart = () => {
-  // const cartItems = [
-  //   {
-  //     id: 1,
-  //     name: "Product 1",
-  //     price: 10,
-  //     image: "https://via.placeholder.com/100",
-  //     quantity: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Product 2",
-  //     price: 20,
-  //     image: "https://via.placeholder.com/100",
-  //     quantity: 1,
-  //   },
-  // ];
+ 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch=useDispatch();
   const totalPrice = cartItems.reduce((total, item) => {

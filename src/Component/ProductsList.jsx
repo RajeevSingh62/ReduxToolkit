@@ -16,7 +16,7 @@ console.log("products list1",products)
   }, [dispatch]);
   return (
     <>
-      <h2>Products List</h2>
+      
       <div  style={{  display: "flex",flexWrap: "wrap", gap: "10px", }}>
         {(Array.isArray(products) ? products : []).map((product)=> 
         {

@@ -1,24 +1,29 @@
-import React from 'react'
-
+import React from "react";
+import cartImg from "../assets/shopping-cart.png";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const Header = () => {
-  const productHandler = () => {
-    console.log('Products Clicked')
-  }
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   return (
     <>
-      <div style={{ height: "50px" }}>
-        <ul style={{ display: 'flex', alignItems: "center", content: "space-around" }}>
-          <li>home</li>
-          <li>cart</li>
-          <li>
-
-            <button style={{ width: "70px", height: "30px", background: "blue", borderRadius: "10px" }} onClick={productHandler}>Products</button>
-
-          </li>
-        </ul>
-      </div>
+      <header
+        style={{
+          padding: "10px",
+          background: "#f0f0f0",
+          display: "flex",
+          alignContent: "space-between",
+        }}
+      >
+        <h2>My Store</h2>
+        <nav>
+          <Link to="/">Products</Link> |{" "}
+          <Link to="/cart">🛒 Cart {cartItems.length} </Link>
+        </nav>
+      </header>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
