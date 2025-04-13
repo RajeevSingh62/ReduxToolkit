@@ -8,8 +8,9 @@ const ProductsList = () => {
 
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.products);
+  const { products } = useSelector((store) => store.products);
 console.log("products list1",products)
+
 
 
 const productss=products.filter((product)=> product ?.category ?.toLowerCase().includes("query"))
