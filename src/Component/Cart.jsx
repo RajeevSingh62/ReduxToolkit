@@ -4,10 +4,11 @@ import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
+  clearCart,
 } from '../redux/CartSlice';
 const Cart = () => {
  
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector((store) => store.cart.cartItems);
   const dispatch=useDispatch();
   const totalPrice = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity;
@@ -16,11 +17,14 @@ const Cart = () => {
     <>
       <div style={{ alignItems: "center" }}>
         <h2>Shopping Cart</h2>
+
+        
         {cartItems.length === 0 ? (
           <p>cart is empty </p>
         ) : (
           <div>
             {cartItems.map((item) => (
+              
               <div
                 key={item.id}
                 style={{
@@ -36,14 +40,19 @@ const Cart = () => {
                 <p>Quantity: {item.quantity}</p>
                 <button onClick={() => dispatch(decreaseQuantity(item.id))}>-</button>
           <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
-          <button onClick={() => useDispatch(removeFromCart(item.id))}>Remove</button>
+          <button onClick={() => dispatch(removeFromCart(item.id))}>Remove</button>
               </div>
               
             ))}
           </div>
+          
         )}
       </div>
+
       <h3>Total: ${totalPrice.toFixed(2)}</h3>
+      <div>
+          <button style={{backgroundColor:"green"}} onClick={()=>dispatch(clearCart())}>clear cart</button>
+        </div>
 
     </>
   );
