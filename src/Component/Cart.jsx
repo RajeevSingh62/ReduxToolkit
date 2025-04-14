@@ -6,6 +6,8 @@ import {
   decreaseQuantity,
   clearCart,
 } from '../redux/CartSlice';
+
+
 const Cart = () => {
  
   const cartItems = useSelector((store) => store.cart.cartItems);

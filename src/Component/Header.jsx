@@ -1,10 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {FaMoon, FaSun} from "react-icons/fa"
+import { toggleTheme } from "../redux/ThemeSlice";
+
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.cartItems);
-
+         const theme=useSelector((store)=>store.theme.theme)
+        const dispatch=useDispatch();
 
   return (
     <header
@@ -59,6 +63,13 @@ const Header = () => {
             {cartItems.length}
           </span>
         </Link>
+        <button onClick={() => {
+    dispatch(toggleTheme());
+    console.log("Theme toggled");
+}}>
+  {theme==="light" ? <FaMoon /> : <FaSun />}
+</button>
+
       </nav>
     </header>
   );
