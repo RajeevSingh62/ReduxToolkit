@@ -21,7 +21,7 @@ console.log("productss",productss)
   }, [dispatch]);
   return (
     <>
-        <input type="text" placeholder="search" onChange={(e)=>setQuerry(e.target.value)} />
+        <input type="text" style={{margin:"20px",height:"30px",width:"180px" ,textAlign:"center"}} placeholder="search" onChange={(e)=>setQuerry(e.target.value)} />
       <div  style={{  display: "flex",flexWrap: "wrap", gap: "10px", }}>
         {products.filter((product)=>
          product?.name?.toLowerCase().includes(query.toLowerCase()) ||
