@@ -26,6 +26,9 @@ const Header = () => {
     >
       <h2 style={{ margin: 0, color: "#333" }}>🛍️ My Store</h2>
       <nav style={{ display: "flex", gap: "20px" }}>
+
+
+
         <Link
           to="/"
           style={{
@@ -37,6 +40,29 @@ const Header = () => {
         >
           Products
         </Link>
+        <Link
+          to="/addproducts"
+          style={{
+            textDecoration: "none",
+            color: "#333",
+            fontWeight: "500",
+            fontSize: "16px",
+          }} 
+        > 
+          Add Products
+       </Link>
+
+       <Link
+          to="/login"
+          style={{
+            textDecoration: "none",
+            color: "#333",
+            fontWeight: "500",
+            fontSize: "16px",
+          }} 
+        > 
+          login
+       </Link>
         <Link
           to="/cart"
           style={{

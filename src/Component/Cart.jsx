@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../redux/Auth/AuthThunk";
 import {
   removeFromCart,
   increaseQuantity,
@@ -11,6 +12,13 @@ import {
 const Cart = () => {
  
   const cartItems = useSelector((store) => store.cart.cartItems);
+  const { isLoggedIn } = useSelector((state) => state.auth); // get login state
+    // Redirect when login is successful
+    useEffect(() => {
+      if (isLoggedIn) {
+        navigate("/cart"); // 👈 change path if needed
+      }
+    }, [isLoggedIn, navigate]);
   const dispatch=useDispatch();
   const totalPrice = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity;
