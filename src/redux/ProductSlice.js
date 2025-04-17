@@ -10,7 +10,7 @@ const initialState = {
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {}, // No normal reducers, just async thunks
+  reducers: {}, 
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
